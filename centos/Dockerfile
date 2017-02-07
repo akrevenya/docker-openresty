@@ -6,12 +6,12 @@ FROM centos:7
 MAINTAINER Evan Wies <evan@neomantra.net>
 
 # Docker Build Arguments
-ARG RESTY_VERSION="1.11.2.2"
-ARG RESTY_LUAROCKS_VERSION="2.3.0"
-ARG RESTY_OPENSSL_VERSION="1.0.2j"
-ARG RESTY_PCRE_VERSION="8.39"
-ARG RESTY_J="1"
-ARG RESTY_CONFIG_OPTIONS="\
+ENV RESTY_VERSION="1.11.2.2"
+ENV RESTY_LUAROCKS_VERSION="2.3.0"
+ENV RESTY_OPENSSL_VERSION="1.0.2j"
+ENV RESTY_PCRE_VERSION="8.39"
+ENV RESTY_J="1"
+ENV RESTY_CONFIG_OPTIONS="\
     --with-file-aio \
     --with-http_addition_module \
     --with-http_auth_request_module \
@@ -43,7 +43,7 @@ ARG RESTY_CONFIG_OPTIONS="\
     "
 
 # These are not intended to be user-specified
-ARG _RESTY_CONFIG_DEPS="--with-openssl=/tmp/openssl-${RESTY_OPENSSL_VERSION} --with-pcre=/tmp/pcre-${RESTY_PCRE_VERSION}"
+ENV _RESTY_CONFIG_DEPS="--with-openssl=/tmp/openssl-${RESTY_OPENSSL_VERSION} --with-pcre=/tmp/pcre-${RESTY_PCRE_VERSION}"
 
 
 # 1) Install yum dependencies
